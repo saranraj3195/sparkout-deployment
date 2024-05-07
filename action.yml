@@ -1,5 +1,5 @@
-name: 'Deploy with rsync'
-description: 'Deploy files via rsync over SSH'
+name: 'Custom Deploy Action'
+description: 'Deploy files via rsync using a custom script'
 
 inputs:
   DEPLOY_KEY:
@@ -18,13 +18,12 @@ inputs:
     description: 'Destination directory on the server'
     required: true
   ARGS:
-    description: 'Additional rsync arguments (optional)'
+    description: 'Additional rsync arguments'
     required: false
   FOLDER:
-    description: 'Folder to sync (optional, default is the whole repository)'
+    description: 'Folder to deploy'
     required: false
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  
+  using: 'shell'
+  command: './deploy.sh'
