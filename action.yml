@@ -25,5 +25,6 @@ inputs:
     required: false
 
 runs:
-  using: 'shell'
-  main: deploy.sh
+  using: 'docker'
+  image: 'docker://ubuntu:bionic'
+  entrypoint: '/entrypoint.sh'
