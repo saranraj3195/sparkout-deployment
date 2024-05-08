@@ -24,6 +24,4 @@ SERVER_DEPLOY_STRING="$USERNAME@$SERVER_IP:$SERVER_DESTINATION"
 echo "rsync $ARGS -e 'ssh -i $SSHPATH/key -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $SERVER_DEPLOY_STRING"
 
 # Sync files using rsync
-#!/bin/bash
-# Sync files using rsync
 rsync $ARGS -e "ssh -i $SSHPATH/key -o StrictHostKeyChecking=no -p $SERVER_PORT" "$GITHUB_WORKSPACE/$FOLDER" "$SERVER_DEPLOY_STRING"
