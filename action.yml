@@ -26,4 +26,5 @@ inputs:
 
 runs:
   using: 'shell'
-  command: './deploy.sh'
+  shell: bash
+  main: deploy.sh
