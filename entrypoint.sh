@@ -1,8 +1,12 @@
 #!/bin/bash
+set -eu
 
-set -eo pipefail
-
-# Your entrypoint.sh script content goes here
-# Make sure to include the necessary commands for executing SSH commands
-# Example:
-echo "Hello, this is the entrypoint.sh script."
+SSHPATH="$HOME/.ssh"
+if [ ! -d "$SSHPATH" ]; then
+  mkdir -p "$SSHPATH"
+fi
+echo "$DEPLOY_KEY" > "$SSHPATH/key"
+chmod 600 "$SSHPATH/key"
+SERVER_DEPLOY_STRING="$USERNAME@$SERVER_IP:$SERVER_DESTINATION"
+# sync it up"
+sh -c "rsync $ARGS -e 'ssh -i $SSHPATH/key -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $SERVER_DEPLOY_STRING"

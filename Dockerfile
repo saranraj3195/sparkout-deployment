@@ -1,6 +1,20 @@
-FROM ghcr.io/appleboy/drone-ssh:1.7.4
+FROM debian:stable-slim
 
-COPY entrypoint.sh /bin/entrypoint.sh
-RUN chmod +x /bin/entrypoint.sh
+RUN apt update
+RUN apt -yq install rsync openssh-client
 
-ENTRYPOINT ["/bin/entrypoint.sh"]
+
+# Label
+LABEL "com.github.actions.name"="Deploy with rsync"
+LABEL "com.github.actions.description"="Deploy to a remote server using rsync over ssh"
+LABEL "com.github.actions.color"="green"
+LABEL "com.github.actions.icon"="truck"
+
+LABEL "repository"="http://github.com/AEnterprise/rsync-deploy"
+LABEL "homepage"="https://github.com/AEnterprise/rsync-deploy"
+LABEL "maintainer"="AEnterprise <aenterprise@aenterprise.info>"
+
+
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
