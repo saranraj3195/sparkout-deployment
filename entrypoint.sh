@@ -9,7 +9,6 @@ chmod 600 "$SSHPATH/key"
 # Set up deployment server details using environment variables
 SERVER_DEPLOY_STRING="$USERNAME@$SERVER_IP:$SERVER_DESTINATION"
 
-# Define rsync options and execute deployment
+# Define rsync options and execute the deployment
 RSYNC_OPTIONS="-avz --delete"
-# Add StrictHostKeyChecking=no option to disable host key checking
 sh -c "rsync $RSYNC_OPTIONS -e 'ssh -i $SSHPATH/key -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $SERVER_DEPLOY_STRING"
