@@ -1,0 +1,30 @@
+name: "SSH Deployment"
+description: "Deploy files to a server using SSH and rsync"
+author: "Your Name"
+
+inputs:
+  DEPLOY_KEY:
+    description: "SSH private key for authentication"
+    required: true
+  USERNAME:
+    description: "SSH username"
+    required: true
+  SERVER_IP:
+    description: "IP address of the server"
+    required: true
+  SERVER_PORT:
+    description: "SSH port of the server"
+    required: true
+  SERVER_DESTINATION:
+    description: "Destination directory on the server"
+    required: true
+  ARGS:
+    description: "Additional rsync arguments"
+    required: false
+  FOLDER:
+    description: "Folder to deploy"
+    required: false
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
