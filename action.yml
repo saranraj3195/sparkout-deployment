@@ -1,6 +1,6 @@
 name: "SSH Deployment"
 description: "Deploy files to a server using SSH and rsync"
-author: "Your Name"
+author: "saranraj"
 
 inputs:
   DEPLOY_KEY:
