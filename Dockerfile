@@ -10,9 +10,9 @@ LABEL "com.github.actions.description"="Deploy to a remote server using rsync ov
 LABEL "com.github.actions.color"="green"
 LABEL "com.github.actions.icon"="truck"
 
-LABEL "repository"="http://github.com/AEnterprise/rsync-deploy"
-LABEL "homepage"="https://github.com/AEnterprise/rsync-deploy"
-LABEL "maintainer"="AEnterprise <aenterprise@aenterprise.info>"
+# LABEL "repository"="http://github.com/AEnterprise/rsync-deploy"
+# LABEL "homepage"="https://github.com/AEnterprise/rsync-deploy"
+# LABEL "maintainer"="AEnterprise <aenterprise@aenterprise.info>"
 
 
 ADD entrypoint.sh /entrypoint.sh
