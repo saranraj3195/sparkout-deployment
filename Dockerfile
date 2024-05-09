@@ -1,11 +1,8 @@
-FROM ubuntu:bionic
+FROM alpine:3.13
 
-RUN apt-get update && \
-    apt-get install -y rsync openssh-client && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache rsync openssh-client
 
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

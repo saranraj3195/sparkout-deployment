@@ -1,0 +1,21 @@
+name: SSH Rsync Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: SSH Rsync Deploy
+        uses: ./action
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote-user: ${{ secrets.REMOTE_USER }}
+          server-ip: ${{ secrets.SERVER_IP }}
+          remote-path: ${{ secrets.REMOTE_PATH }}

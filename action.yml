@@ -1,30 +1,18 @@
-name: 'Custom Deploy Action'
-description: 'Deploy files via rsync using a custom script'
-
+name: 'SSH Rsync Deploy'
+description: 'Deploys files to a server using SSH and rsync'
 inputs:
-  DEPLOY_KEY:
-    description: 'SSH private key for authentication'
+  ssh-private-key:
+    description: 'SSH private key'
     required: true
-  USERNAME:
-    description: 'SSH username'
+  remote-user:
+    description: 'Remote user for SSH connection'
     required: true
-  SERVER_IP:
+  server-ip:
     description: 'IP address of the server'
     required: true
-  SERVER_PORT:
-    description: 'SSH port of the server'
+  remote-path:
+    description: 'Remote path on the server'
     required: true
-  SERVER_DESTINATION:
-    description: 'Destination directory on the server'
-    required: true
-  ARGS:
-    description: 'Additional rsync arguments'
-    required: false
-  FOLDER:
-    description: 'Folder to deploy'
-    required: false
-
 runs:
   using: 'docker'
-  image: 'docker://ubuntu:bionic'
-  entrypoint: '/entrypoint.sh'
+  image: 'Dockerfile'
