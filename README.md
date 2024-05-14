@@ -12,4 +12,4 @@
 
 
 
-ARGS: "--progress --delete -avzPh --exclude='.git/'  --exclude='bootstrap/cache/' --exclude='public/uploads/' --exclude='storage/' --exclude='.env' --exclude='.git*'  --exclude='.github'   --exclude='client.ovpn'    --exclude='readme.md' "
+ARGS: "--progress --delete -avzPh --exclude='.git/'  --exclude='bootstrap/cache/' --exclude='public/uploads/' --exclude='storage/' --exclude='.env'   --exclude='.github'   --exclude='readme.md' "
